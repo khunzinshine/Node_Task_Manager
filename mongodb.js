@@ -1,7 +1,6 @@
 const { MongoClient, ObjectID } = require("mongodb");
 
-const connectionURL =
-  "mongodb+srv://viola-template:c137i7V884yJOwYi@viola-template.hjt7ppv.mongodb.net/?retryWrites=true&w=majority";
+const connectionURL = process.env.MONGODB_URL;
 const databaseName = "viola-template";
 
 MongoClient.connect(

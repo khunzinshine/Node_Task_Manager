@@ -45,7 +45,7 @@ router.patch("/users/me", auth, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdate = ["name", "email", "password", "age"];
   const isValidOperations = updates.every((update) =>
-    allowedUpdate.includes(update),
+    allowedUpdate.includes(update)
   );
   if (!isValidOperations) {
     res.status(400).send({ error: "Invalid Updates!" });
@@ -64,8 +64,9 @@ router.post("/users/login", async (req, res) => {
   try {
     const user = await User.findByCredentials(
       req.body.email,
-      req.body.password,
+      req.body.password
     );
+    console.log("tokenxxx", user);
     const token = await user.generateAuthToken();
     res.status(200).send({ user, token });
   } catch (e) {
